@@ -6,6 +6,9 @@
 @endsection
 
 @section('content')
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a href="{{ route('createProyectos')}}" class="btn btn-success me-md-2" type="button">Crear proyecto <i class="bi bi-node-plus"></i></a>
+    </div>
     <div class="row">
         @forelse ( $proyectos as $proyecto )
         <div class="col-12 col-md-3">
@@ -33,11 +36,11 @@
                         </form>
                     </div>
                     <div>
-                        <form action="#" method="post">
+                        <form action="{{ route('updateProyectos', $proyecto)}}" method="GET">
+                            {{-- @csrf --}}
                             <button type="submit" class="bg-primary text-white btn "><i class="bi bi-pencil-square"></i> Actualizar</button>
                         </form>
                     </div>
-                    {{-- <a href="#" class="card-link">Another link</a> --}}
                 </div>
             </div>
         </div>
@@ -48,7 +51,6 @@
     <div class="w-100 d-flex justify-content-center align-items-center mt-3">
         {{ $proyectos->links() }}
     </div>
-
 
 <style>
     @media (min-width: 655px) {
@@ -64,3 +66,4 @@
     }
 </style>
 @endsection
+

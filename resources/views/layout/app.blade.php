@@ -25,8 +25,10 @@
                         <a class="nav-link" href="{{route('aboutProyectos')}}">Nosotros</a>
                     </li>
                 </ul>
-                <form class="d-flex flex-row">
-                    <input class="form-control me-2" type="search" placeholder="Buscar proyecto" aria-label="Search">
+                <form class="d-flex flex-row" action="{{ route('findProyectos') }}" method="POST">
+                    @csrf
+                    @method('post')
+                    <input class="form-control me-2" type="text" placeholder="Buscar proyecto" id="nombre" name="nombre" idaria-label="Search">
                     <button class="mr- btn btn-outline-success" type="submit"><i class="bi bi-search"></i>Buscar</button>
                 </form>
             </div>

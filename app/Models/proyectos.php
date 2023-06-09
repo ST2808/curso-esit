@@ -15,6 +15,7 @@ class proyectos extends Model
         'NombreProyecto',
         'UrlLogo',
         'FuenteFondos',
+        'descripcion',
         'MontoPlanificado',
         'MontoPatrocinado',
         'MontoFondosPropios',
