@@ -24,7 +24,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <label for="UrlLogo" class="form-label">Logo del proyecto</label>
-                <input name="UrlLogo" type="file" class="form-control" id="UrlLogo" @error('UrlLogo') class="border border-danger" @enderror>
+                <input name="UrlLogo" type="file" disabled class="form-control" id="UrlLogo" @error('UrlLogo') class="border border-danger" @enderror>
                 @error('UrlLogo')
                     <span id="UrlLogo" class="text-danger">{{$message}}</span>
                 @enderror
@@ -66,14 +66,14 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <label for="FechaInicio" class="form-label">Fecha de inicio</label>
-                <input name="FechaInicio" type="date" class="form-control" id="FechaInicio" @error('FechaInicio') class="border border-danger" @enderror value="{{old('FechaInicio', $proyecto->FechaInicio)}}">
+                <input name="FechaInicio" type="date" class="form-control" id="FechaInicio" @error('FechaInicio') class="border border-danger" @enderror value="{{old('FechaInicio', $proyecto->dateForInput($proyecto->FechaInicio))}}">
                 @error('FechaInicio')
                     <span id="FechaInicio" class="text-danger">{{$message}}</span>
                 @enderror
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <label for="FechaFin" class="form-label">Fecha de finalización</label>
-                <input name="FechaFin" type="date" class="form-control" id="FechaFin" @error('FechaFin') class="border border-danger" @enderror value="{{old('FechaFin', $proyecto->FechaFin)}}">
+                <input name="FechaFin" type="date" class="form-control" id="FechaFin" @error('FechaFin') class="border border-danger" @enderror form value="{{ old('FechaFin', $proyecto->dateForInput($proyecto->FechaFin)) }}">
                 @error('FechaFin')
                     <span id="FechaFin" class="text-danger">{{$message}}</span>
                 @enderror

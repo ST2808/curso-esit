@@ -7,6 +7,9 @@
 
 @section('content')
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        @if ($path === 'find')
+            <a href="{{ route('indexProyectos', $proyectos) }}" class="btn btn-primary"><i class="bi bi-x-octagon"></i> Limpiar busqueda</a>
+        @endif
         <a href="{{ route('createProyectos')}}" class="btn btn-success me-md-2" type="button">Crear proyecto <i class="bi bi-node-plus"></i></a>
     </div>
     <div class="row">
@@ -29,11 +32,11 @@
                 </ul>
                 <div class="card-body d-flex flex-cloumn justify-content-between">
                     <div>
-                        <form action="{{route('destroyProyectos', $proyecto)}}" method="post">
+                        {{-- <form action="{{route('destroyProyectos', $proyecto)}}" method="post">
                             @csrf
-                            @method("delete")
-                            <button type="submit" class="bg-danger text-white btn "><i class="bi bi-trash3"></i> Eliminar</button>
-                        </form>
+                            @method("delete") --}}
+                            <button type="button" class="bg-danger text-white btn " id="deleteX"><i class="bi bi-trash3"></i> Eliminar</button>
+                        {{-- </form> --}}
                     </div>
                     <div>
                         <form action="{{ route('updateProyectos', $proyecto)}}" method="GET">
@@ -66,4 +69,33 @@
     }
 </style>
 @endsection
+
+
+@push('scripts')
+{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById("deleteX").addEventListener("click", function(item) {
+        // alert('hola');
+        console.log(item);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You won't be able to revert this! ${item}`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+                // window.locate = href = '/'
+            }
+        })
+    }); --}}
+</script>
+@endpush
 

@@ -5,24 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\proyectos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Carbon\Carbon;
 
 class ProyectoController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $url = $request->path();
 
         $proyectos = proyectos::paginate(8);
 
         return view('proyectos.index', [
             'proyectos' => $proyectos,
+            'path' => $url,
         ]);
     }
 
     public function find(Request $request){
+        $url = $request->path();
 
         $proyectos = proyectos::where('NombreProyecto', 'like', '%' . $request->nombre . '%')->paginate(8);
 
         return view('proyectos.index', [
             'proyectos' => $proyectos,
+            'path' => $url,
         ]);
     }
 
@@ -47,7 +52,6 @@ class ProyectoController extends Controller
             'FechaFin' => ['required', 'max:200', ],
         ]);
 
-        // dd($request->FuentesFondos);
         proyectos::create([
             'NombreProyecto' => $request->NombreProyecto,
             'UrlLogo' => 'quemado',
@@ -56,8 +60,8 @@ class ProyectoController extends Controller
             'MontoPlanificado' => $request->MontoPlanificado,
             'MontoPatrocinado' => $request->MontoPatrocinado,
             'MontoFondosPropios' => $request->MontoFondosPropios,
-            'FechaInicio' => '1999-12-31 23:59:59',
-            'FechaFin' => '1999-12-31 23:59:59',
+            'FechaInicio' => Carbon::parse($request->FechaInicio),
+            'FechaFin' => Carbon::parse($request->FechaFin),
         ]);
 
         return redirect()->route('indexProyectos');
@@ -80,8 +84,6 @@ class ProyectoController extends Controller
             'FechaFin' => ['required', 'max:200', ],
         ]);
 
-        // dd($proyecto);
-
         $proyecto->update([
             'NombreProyecto' => $request->NombreProyecto,
             'UrlLogo' => 'quemado',
@@ -98,7 +100,7 @@ class ProyectoController extends Controller
     }
 
     public function destroy(proyectos $proyecto) {
-        $proyecto->delete();
-        return redirect()->route('indexProyectos');
+        // $proyecto->delete();
+        // return redirect()->route('indexProyectos');
     }
 }

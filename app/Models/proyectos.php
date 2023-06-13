@@ -29,4 +29,9 @@ class proyectos extends Model
     public function formatDate($value){
         return Carbon::parse($value)->format('m/d/Y');
     }
+
+    public function dateForInput($value){
+        return Carbon::parse($value)->toDateString();
+    }
+
 }

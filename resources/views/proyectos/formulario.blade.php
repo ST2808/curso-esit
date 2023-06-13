@@ -8,7 +8,7 @@
     </div>
     <div class="col-12 col-md-6 col-lg-4">
         <label for="UrlLogo" class="form-label">Logo del proyecto</label>
-        <input name="UrlLogo" type="file" class="form-control" id="UrlLogo" @error('UrlLogo') class="border border-danger" @enderror>
+        <input name="UrlLogo" type="file" class="form-control" disabled id="UrlLogo" @error('UrlLogo') class="border border-danger" @enderror>
         @error('UrlLogo')
             <span id="UrlLogo" class="text-danger">{{$message}}</span>
         @enderror
@@ -22,7 +22,7 @@
     </div>
     <div class="col-12 col-md-6 col-lg-4">
         <label for="descripcion" class="form-label">Descripción del proyecto</label>
-        <textarea name="descripcion" type="text" class="form-control" id="descripcion" @error('descripcion') class="border border-danger" @enderror>{{old('description')}}</textarea >
+        <textarea name="descripcion" type="text" class="form-control" id="descripcion" @error('descripcion') class="border border-danger" @enderror>{{old('descripcion')}}</textarea >
         @error('descripcion')
             <span id="descripcion" class="text-danger">{{$message}}</span>
         @enderror
