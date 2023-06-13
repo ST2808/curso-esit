@@ -95,7 +95,7 @@
                 // window.locate = href = '/'
             }
         })
-    }); --}}
-</script>
+    });
+</script> --}}
 @endpush
 
